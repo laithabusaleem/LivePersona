@@ -1,0 +1,274 @@
+:root {
+  --bg0: #0c1220;
+  --bg1: #141e2e;
+  --panel: #1a2740;
+  --line: #2d4466;
+  --text: #e8eef8;
+  --muted: #93a4bd;
+  --accent: #3dd6c6;
+  --accent-2: #f0b429;
+  --danger: #f07178;
+  --ok: #7fd99a;
+  --font: "DM Sans", "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 20% 0%, #1a3a4a 0%, transparent 45%),
+    radial-gradient(ellipse at 90% 10%, #3a2a18 0%, transparent 40%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 2rem;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 0.75rem;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  letter-spacing: -0.02em;
+}
+
+.brand p {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+}
+
+.badge {
+  display: inline-block;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--muted);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-family: var(--mono);
+  border-radius: 4px;
+}
+
+.badge.warn {
+  color: var(--accent-2);
+  border-color: var(--accent-2);
+}
+
+.badge.ok {
+  color: var(--ok);
+  border-color: var(--ok);
+}
+
+.badge.danger {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.layout {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: 340px 1fr;
+  }
+}
+
+.panel {
+  background: color-mix(in srgb, var(--panel) 92%, black);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.9rem;
+}
+
+.panel h2,
+.panel h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
+}
+
+.avatar-stage {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+  background: linear-gradient(180deg, #0f1a2a, #152033);
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+.avatar-svg {
+  width: 200px;
+  height: 240px;
+}
+
+.avatar-svg.speaking .mouth {
+  animation: talk 0.28s ease-in-out infinite alternate;
+}
+
+.avatar-svg.speaking .glow {
+  opacity: 0.85;
+}
+
+@keyframes talk {
+  from {
+    transform: scaleY(0.55);
+  }
+  to {
+    transform: scaleY(1.15);
+  }
+}
+
+.state-chip {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid var(--line);
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-height: 360px;
+  overflow: auto;
+}
+
+.bubble {
+  padding: 0.55rem 0.7rem;
+  border-radius: 10px;
+  max-width: 92%;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.bubble.user {
+  align-self: flex-end;
+  background: #243b5c;
+}
+
+.bubble.assistant {
+  align-self: flex-start;
+  background: #1d3344;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line));
+}
+
+.bubble.cancelled {
+  opacity: 0.55;
+  text-decoration: line-through;
+}
+
+.composer {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.composer textarea {
+  width: 100%;
+  min-height: 70px;
+  resize: vertical;
+  background: var(--bg0);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.6rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.btn {
+  border: 1px solid #0a1018;
+  background: var(--accent);
+  color: #06201c;
+  padding: 0.45rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn.secondary {
+  background: var(--panel);
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.btn.danger {
+  background: var(--danger);
+  color: #1a0608;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.error {
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  background: rgba(240, 113, 120, 0.08);
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+}
+
+.metrics {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.field label {
+  font-size: 0.8rem;
+  color: var(--muted);
+}

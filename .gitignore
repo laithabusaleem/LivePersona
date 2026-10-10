@@ -1,0 +1,12 @@
+node_modules/
+dist/
+build/
+.env
+.env.local
+*.log
+apps/server/data/
+.DS_Store
+Thumbs.db
+.vite/
+coverage/
+*.tsbuildinfo

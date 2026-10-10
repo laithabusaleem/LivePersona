@@ -1,0 +1,25 @@
+{
+  "name": "livepersona",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Interactive avatar conversation system with interruption-aware dialogue",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run build -w @livepersona/core && concurrently -n core,server,web -c cyan,magenta,green \"npm run dev -w @livepersona/core\" \"npm run dev -w @livepersona/server\" \"npm run dev -w @livepersona/web\"",
+    "build": "npm run build -w @livepersona/core && npm run build -w @livepersona/server && npm run build -w @livepersona/web",
+    "test": "npm run test -w @livepersona/core && npm run test -w @livepersona/server",
+    "typecheck": "npm run typecheck -w @livepersona/core && npm run typecheck -w @livepersona/server && npm run typecheck -w @livepersona/web",
+    "start": "npm run start -w @livepersona/server"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.8.2"
+  },
+  "license": "MIT"
+}
